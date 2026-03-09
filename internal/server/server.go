@@ -4,6 +4,7 @@ import (
 	"context"
 
 	api "github.com/samuelpsouza/proglog/api/v1"
+	"google.golang.org/grpc"
 )
 
 type Config struct {
@@ -11,6 +12,18 @@ type Config struct {
 }
 
 var _ api.LogServer = (*grpcServer)(nil)
+
+func NewGROCServer(config *Config) (*grpc.Server, error) {
+	gsrv := grpc.NewServer()
+	srv, err := newgrpcServer(config)
+
+	if err != nil {
+		return nil, err
+	}
+
+	api.RegisterLogServer(gsrv, srv)
+	return gsrv, nil
+}
 
 type grpcServer struct {
 	api.UnimplementedLogServer

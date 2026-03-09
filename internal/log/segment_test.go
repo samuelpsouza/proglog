@@ -31,7 +31,7 @@ func TestSegment(t *testing.T) {
 	for i := uint64(0); i < 3; i++ {
 		off, err := s.Append(want)
 		require.NoError(t, err)
-		require.Equal(t, 16+1, off)
+		require.Equal(t, 16+i, off)
 
 		got, err := s.Read(off)
 		require.NoError(t, err)
