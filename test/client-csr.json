@@ -1,0 +1,17 @@
+{
+    "CN": "client",
+    "hosts": [""],
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [
+        {
+            "C": "BR",
+            "L": "Indaiatuba",
+            "ST": "São Paulo",
+            "O": "ssouza dev",
+            "OU": "Distributed Services"
+        }
+    ]
+}
